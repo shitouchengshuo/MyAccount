@@ -7,12 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MyAccount" />
-        <module name="MyOwenSSM" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MyAccount" target="1.8" />
-      <module name="MyOwenSSM" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

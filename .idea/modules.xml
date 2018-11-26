@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyAccount.iml" filepath="$PROJECT_DIR$/MyAccount.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MyOwenSSM.iml" filepath="$PROJECT_DIR$/MyOwenSSM.iml" />
     </modules>
   </component>
 </project>
