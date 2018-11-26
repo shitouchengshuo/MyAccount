@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <description>redis cluster configuation</description>
+    <!---->
+    <bean id="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <!--连接池中最大空闲连接数, 默认8个-->
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <!--连接池中最小空闲连接数-->
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <!--连接池中最大连接数, 默认8个-->
+        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <!--是否启用pool的jmx管理功能, 默认true-->
+        <property name="jmxEnabled" value="${redis.pool.jmxEnabled}"/>
+        <!--当连接池资源耗尽时，调用者最大阻塞的时间，超时将跑出异常。单位，毫秒数;默认为-1.表示永不超时-->
+        <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
+        <!--多长时间后回收空闲连接。负值(-1)表示不移除-->
+        <property name="minEvictableIdleTimeMillis" value="${redis.pool.minEvictableIdleTimeMillis}"/>
+        <!--对于“空闲链接”检测线程而言，每次检测的链接资源的个数。默认为3-->
+        <property name="numTestsPerEvictionRun" value="${redis.pool.numTestsPerEvictionRun}"/>
+        <!--向调用者输出“链接”资源时，是否检测是有有效，如果无效则从连接池中移除，
+           并尝试获取继续获取。默认为false。建议保持默认值.-->
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+        <!--向连接池“归还”链接时，是否检测“链接”对象的有效性。默认为false。建议保持默认值-->
+        <property name="testOnReturn" value="${redis.pool.testOnReturn}"/>
+        <!--“空闲链接”检测线程（用于释放链接）检测的周期（毫秒）。如果为负值，表示不运行“检测线程”。默认为-1-->
+        <property name="timeBetweenEvictionRunsMillis" value="${redis.pool.timeBetweenEvictionRunsMillis}"/>
+        <!--连接耗尽时是否阻塞, false报异常,true阻塞直到超时, 默认true-->
+        <property name="blockWhenExhausted" value="${redis.pool.blockWhenExhausted}"/>
+    </bean>
+
+
+    <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster" destroy-method="close">
+        <constructor-arg>
+            <set>
+                <bean id="jedisClusterNode1" class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg value="${jedisClusterNode.1.host}"/>
+                    <constructor-arg value="${jedisClusterNode.1.port}"/>
+                </bean>
+                <bean id="jedisClusterNode2" class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg value="${jedisClusterNode.2.host}"/>
+                    <constructor-arg value="${jedisClusterNode.2.port}"/>
+                </bean>
+                <bean id="jedisClusterNode3" class="redis.clients.jedis.HostAndPort">
+                    <constructor-arg value="${jedisClusterNode.3.host}"/>
+                    <constructor-arg value="${jedisClusterNode.3.port}"/>
+                </bean>
+            </set>
+        </constructor-arg>
+
+        <!--redis的连接超时时间-->
+        <constructor-arg name="connectionTimeout" value="${redis.connectionTimeout}"/>
+
+        <!--redis获取数据超时时间-->
+        <constructor-arg name="soTimeout" value="${redis.soTimeout}"/>
+
+        <!--redis出现异常最大重试次数-->
+        <constructor-arg name="maxAttempts" value="${redis.maxAttempts}"/>
+        <constructor-arg ref="genericObjectPoolConfig"/>
+    </bean>
+
+</beans>
