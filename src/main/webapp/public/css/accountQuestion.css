@@ -1,0 +1,20 @@
+.select-question-filed{
+	width: 200px;
+	text-align: right;
+}
+
+.normal_input_question{
+	width: 356px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #e0e0e0;
+}
+
+.title_left{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+	margin-left: 300px;
+	margin-right: 70px;
+}

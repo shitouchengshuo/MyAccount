@@ -1,0 +1,14 @@
+.routerlist{
+	height: 90px;
+	line-height: 90px;
+	width: 1200px;
+}
+.getRouter{
+	margin-top: 130px;
+}
+
+@media screen and (max-width: 1440px) { 
+	.routerlist{
+		width: 920px;
+	}
+}

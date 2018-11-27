@@ -1,0 +1,47 @@
+/** 
+ * loginHistory.jsp对应的css文件
+ * @Author: tengfei.cheng
+ * @Time: 2016-12-21 14:27
+ */
+
+@CHARSET "UTF-8";
+#updatePwd, #showAllTextButton{
+	color:#6495ED;
+}
+#hideandshowdiv{
+	padding-right: 130px;
+	text-align:right;
+	margin-bottom: 50px;
+}
+* { 
+	margin: 0; 
+	padding: 0; 
+}
+#page-wrap {
+	margin: 50px;
+}
+p {
+	margin: 20px 0; 
+}
+
+	/* 
+	Generic Styling, for Desktops/Laptops 
+	*/
+	table { 
+		width: 100%; 
+		border-collapse: collapse; 
+	}
+	/* Zebra striping */
+	tr:nth-of-type(odd) { 
+		background: #eee; 
+	}
+	th { 
+		background: #333; 
+		color: white; 
+		font-weight: bold; 
+	}
+	td, th { 
+		padding: 6px; 
+		border: 1px solid #ccc; 
+		text-align: left; 
+	}

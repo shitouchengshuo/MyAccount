@@ -1,0 +1,167 @@
+html,body{
+    background: #f5f5f5;
+}
+.layout{
+	background-color: #fff;
+    width: 854px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -290px;
+    margin-left: -427px;
+    height: 580px;
+    -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.wrap{
+	padding-bottom: 80px;
+}
+.wrapper{
+	width: 100%;
+    min-height: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: box;
+    display: -moz-box;
+    display: -o-box;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    box-pack: center;
+}
+
+.header_tit {
+    padding: 60px 0 22px;
+}
+.logo{
+	width: 200px;
+    height: 32px;
+    margin: 0 auto;
+    display: block;
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+}
+.header_tit_txt {
+    font-size: 30px;
+    color: #424242;
+    font-weight: normal;
+    padding-top: 20px;
+}
+.login_area {
+    width: 358px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+.login_input,.placeholder{
+	width: 356px;
+	height: 48px;
+    line-height: 48px;
+	border: 1px solid #e0e0e0;
+}
+
+.btnadpt {
+    width: 100%;
+    height: 50px;
+    display: block;
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 0px;
+}
+
+.btnadpt_orange {
+    width: 100%;
+    height: 50px;
+    display: block;
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #FFAB26;
+    cursor: pointer;
+    margin-left: 0px;
+}
+
+.btns_bg{
+	margin-top: 30px;
+}
+.clearfix{
+    clear: none;
+    zoom: 1;
+}
+.n_links_area {
+    padding-bottom:25px;
+    text-align: center;
+    color: #e0e0e0;
+}
+
+.n_links_area a {
+    padding: 0 9px;
+    font-size: 14px;
+}
+.copyright{
+	width: 300px;
+    text-align: center;
+    font-size: 14px;
+    margin: 20px auto 58px;
+}
+
+.voice_tip{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login_logo:hover{
+    cursor: pointer;
+}
+
+.orange.disabled:hover {
+    cursor: not-allowed !important;
+}
+
+@media screen and (max-height: 630px) {
+	.layout{
+	    position: static;
+	    margin: 0 auto;
+	}
+}
+
+
+.tang-pass-login-phoenix{
+    border-top:1px solid #eee;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.pass-phoenix-title{
+    font-size: 12px;
+    color: #666;
+}
+.pass-phoenix-btn{
+
+}
+.bd-acc-list , .bd-acc-list li{
+    float: left;
+    list-style: none;
+}
+.bd-acc-qzone{
+
+}
+.bd-acc-tsina{
+
+}
+.bd-acc-img{
+    height: 45px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: -45px;
+}
+.bd-acc-list .phoenix-btn-item{
+    height: 45px;
+}

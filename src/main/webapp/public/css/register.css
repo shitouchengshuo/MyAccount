@@ -1,0 +1,22 @@
+.layout{
+	background-color: #fff;
+    width: 854px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -358px;
+    margin-left: -427px;
+    height: 716px;
+    -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.code{
+    width: 230px;
+}
+@media screen and (max-height: 720px) {
+	.layout{
+	    position: static;
+	    margin: 0 auto;
+	}
+}

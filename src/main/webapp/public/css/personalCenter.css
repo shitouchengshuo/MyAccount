@@ -1,0 +1,25 @@
+#content-left{
+    height:400px;
+    width:35%;
+    margin-left:40px;/*设置元素跟其他元素的距离为20像素*/
+   	margin-right:10px;
+    float:left;/*设置浮动，实现多列效果，div+Css布局中很重要的*/
+    background:#f2f2f2;
+}
+#content-right{
+    height:400px;
+    width:50%;
+    margin-left:10px;/*设置元素跟其他元素的距离为20像素*/
+   	margin-right:20px;
+    float:left;/*设置浮动，实现多列效果，div+Css布局中很重要的*/
+}
+#avatar{
+	transform: rotate(180deg);
+	margin-top: -46px;
+    margin-left: 50px;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    background-image: url(../images/default_avatar.jpg);
+    background-size: contain;
+}

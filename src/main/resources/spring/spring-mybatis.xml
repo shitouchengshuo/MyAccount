@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 扫描service包下所有使用注解的类型 -->
-    <context:component-scan base-package="com.qiqi.juint.test.service"/>
+    <context:component-scan base-package="com.qiqi.account.service"/>
 
     <!-- 配置数据库相关参数properties的属性：${url} -->
     <!-- 数据库连接池 -->
@@ -34,7 +34,7 @@
         <!-- 注入数据库连接池-->
         <property name="dataSource" ref="localdataSource"/>
         <!-- 扫描model包 使用别名 -->
-        <property name="typeAliasesPackage" value="com.qiqi.juint.test.model"/>
+        <property name="typeAliasesPackage" value="com.qiqi.account.model"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
 
@@ -45,7 +45,7 @@
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描Dao接口包 -->
-        <property name="basePackage" value="com.qiqi.juint.test.dao"/>
+        <property name="basePackage" value="com.qiqi.account.dao"/>
     </bean>
 
     <!-- 配置事务管理器 -->

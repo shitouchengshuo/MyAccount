@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.image{
+	float:left;
+	margin-right:10px;
+}
+.router-img{
+	width:60px;
+}
+#deviceList{
+	margin-top:30px;
+}
+#item{
+	margin-bottom:30px;
+}
