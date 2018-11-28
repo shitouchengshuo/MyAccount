@@ -12,7 +12,7 @@
 >
     <!-- 自动注册组件,用于加载静态图片等资源
     <mvc:annotation-driven/>
-    -->
+-->
     <!-- 扫描web相关的bean -->
     <context:component-scan base-package="com.qiqi.account"/>
 
@@ -50,7 +50,9 @@
     <mvc:resources mapping="/**" location="/public/images/" />
     <mvc:resources mapping="/**" location="/js/" />
     <mvc:resources mapping="/**" location="/public/css/"/>
--->
+    -->
+    <!--
     <mvc:default-servlet-handler/>
+    -->
 
 </beans>

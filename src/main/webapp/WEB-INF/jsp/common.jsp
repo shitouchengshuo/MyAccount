@@ -8,6 +8,6 @@
         <li onclick="forwardUrl('${pageContext.request.contextPath}/ui/loginHistory')">登录记录</li>
         <li onclick="forwardUrl('${pageContext.request.contextPath}/ui/deviceManage')">设备管理</li>
         <li onclick="forwardUrl('${pageContext.request.contextPath}/ui/accountBind')">绑定授权</li>
-        <li onclick="forwardUrl('${pageContext.request.contextPath}/ui/serviceAndSubscription')">斐讯服务</li>
+        <li onclick="forwardUrl('${pageContext.request.contextPath}/ui/serviceAndSubscription')">服务</li>
     </ul>
 </div>

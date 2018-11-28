@@ -25,6 +25,13 @@ public class Realm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+
+		/**
+		 * 从数据库加载当前用户的角色，例如：[admin]
+		 * authorizationInfo.setRoles(new HashSet<String>(sysusersservice.getSysRoles(username)));
+		 * 从数据库加载当前用户可以访问的资源，例如：[index.jsp, abc.jsp]
+		 *  authorizationInfo.setStringPermissions(new HashSet<String>(sysusersservice.getSysResource(username)));
+		 */
 		Set<String> roleNames = new HashSet<>();
 		Set<String> permissions = new HashSet<String>();
 		roleNames.add("administrator");//添加角色
@@ -35,7 +42,7 @@ public class Realm extends AuthorizingRealm {
 	}
 
 	/*
-	 * 登录验证
+	 * 登录验证  只有调用自己调用Subject subject.login(token)才会调用该方法
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(

@@ -35,51 +35,53 @@ public class WebController{
 		return "login";
 	}
 
-	@RequestMapping("/index.jhtml")
-	public ModelAndView getIndex(HttpServletRequest request) throws Exception {
-		ModelAndView mav = new ModelAndView("index");
-		return mav;
-	}
 
-	//跳转到登录页面
-//	@RequestMapping("/login.jhtml")
-//	public ModelAndView login() throws Exception {
+	/**
+	 * 对于控制器的目标方法，无论其返回值是String、View、ModelMap或是ModelAndView，
+	 * SpringMVC都会在内部将它们封装为一个ModelAndView对象进行返回。
+	 * Spring MVC 借助视图解析器（ViewResolver）得到最终的视图对象（View）
+	 */
+//	@RequestMapping("/login")
+//	public ModelAndView loginByMV() throws Exception {
 //		ModelAndView mav = new ModelAndView("login");
 //		return mav;
+//
 //	}
 
-	@RequestMapping("/login.jhtml")
+	@RequestMapping("/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		return "login";
 	}
 
-//	@RequestMapping("success")
-//	public String success(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-//		System.out.println("++++++++++登录成功++++++++++");
-//		return "login";
-//	}
+	@RequestMapping("success")
+	public String success(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		System.out.println("++++++++++登录成功++++++++++");
+		return "success";
+	}
 
 
-//    @RequestMapping("newPage")
-//    public String newPage() throws Exception {
-//        return "login";
-//    }
+    @RequestMapping("newPage")
+    public String newPage() throws Exception {
+        return "login";
+    }
 
 	/**
 	 * 验证用户名和密码
 	 * @return
 	 */
-	@RequestMapping(value = "checkLogin.json", method = RequestMethod.POST)
+	@RequestMapping(value = "checkLogin", method = RequestMethod.POST)
 	@ResponseBody
 	public String login(String username, String password) throws AccountNotExistException {
         Map<String, Object> result = new HashMap<String, Object>();
 	    try{
 			UsernamePasswordToken token = new UsernamePasswordToken(username, MD5Util.MD5(password));
 			Subject currentUser = SecurityUtils.getSubject();
+
 			if (!currentUser.isAuthenticated()){
-				//使用shiro来验证
+				//设置rememberMe
 				token.setRememberMe(true);
-				currentUser.login(token);//验证角色和权限
+				//验证角色和权限
+				currentUser.login(token);
 			}
 		}catch(Exception ex){
 			throw new AccountNotExistException("username:" + username + " not exist!");

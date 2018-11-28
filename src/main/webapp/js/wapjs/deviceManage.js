@@ -36,7 +36,7 @@ function getRouterDevices(){
 					}
 					var newDevice=$('<div class="item">'
 							+'<div class="image">'
-							+'<img class="router-img" src="../public/images/phicomm-router.png" alt="斐讯路由">'
+							+'<img class="router-img" src="../public/images/phicomm-router.png" alt="路由">'
 							+'</div>'
 							+'<div class="description">'
 							+'<div><h4>'+"路由器"+'</h4></div>'

@@ -21,24 +21,24 @@ window.onload=function () {
     var type = "${type}";
     if(type == 'thirdParty'){
         $('#pass-phoenix-login').hide();
-        alert("尚未与斐讯账户绑定,请先注册或者绑定斐讯账户");
+        alert("尚未与账户绑定,请先注册或者绑定账户");
     }
 }
 </script>
-<title>斐讯账户-登录</title>
+<title>账户-登录</title>
 </head>
 <body>
 	<div class="wrapper">
 		<div class="wrap">
 			<div class="layout">
 				<div class="header_tit t_c">
-					<img src="../public/images/logo_old.png" class="login_logo">
-					<h4 class="header_tit_txt" id="login-title">斐讯帐号登录</h4>
+					<img src="../../public/images/logo_old.png" class="login_logo">
+					<h4 class="header_tit_txt" id="login-title">帐号登录</h4>
 				</div>
 				<div class="login_area">
-					<form action="${pageContext.request.contextPath}/ui/checkLogin.json" method="POST" id="login-main-form">
+					<form action="${pageContext.request.contextPath}/ui/checkLogin" method="POST" id="login-main-form">
 						<div class="loginbox">
-							<input id="username" type="text" name="username" value="" placeholder="邮箱/手机号/斐讯帐号"  class="login_input"/>
+							<input id="username" type="text" name="username" value="" placeholder="邮箱/手机号/帐号"  class="login_input"/>
 							<input id="password" type="password" name="password" value="" placeholder="密码"  class="login_input mrg_top"/>
 							<div class="btns_bg">
 		                    	<input onclick="submitLogin()" style="margin-left:0px!important" class="btn btnadpt btn_orange" id="login-button" type="button" value="立即登录">		                      
@@ -77,9 +77,7 @@ window.onload=function () {
                     </div>
                    <%-- <a href="javascript:;" onclick="forwardUrl('${pageContext.request.contextPath}/bind/sina')">微博登录</a>--%>
                 </div>
-				<div class="copyright">
-					版权所有 © 上海斐讯数据通信技术有限公司
-				</div>
+				<div class="copyright"></div>
 			</div>
 		</div>
 	</div>

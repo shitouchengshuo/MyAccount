@@ -15,7 +15,7 @@ function submitLogin(){
 	
 	$.ajax({
 		type:"POST",
-		url:context+"/ui/checkLogin.json",
+		url:context+"/ui/checkLogin",
 		data:{
 			username:username,
 			password:password
@@ -26,7 +26,8 @@ function submitLogin(){
 		success:function(data){
 			if(data.error=="0"){
 				setCookies("access_token",data.access_token);
-				location.href=context+"/ui/index";
+                alert("登录成功");
+				location.href=context+"/ui/success";
 			}else if(data.error=="7"){
 				alert("用户名不存在");
 			}else if(data.error=="8"){
