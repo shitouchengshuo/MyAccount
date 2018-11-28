@@ -10,14 +10,9 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 >
-    <!--异步任务-->
-
-    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-        <property name="corePoolSize" value="5"/>
-        <property name="maxPoolSize" value="10"/>
-        <property name="queueCapacity" value="25"/>
-    </bean>
-
+    <!-- 自动注册组件,用于加载静态图片等资源
+    <mvc:annotation-driven/>
+    -->
     <!-- 扫描web相关的bean -->
     <context:component-scan base-package="com.qiqi.account"/>
 
@@ -34,30 +29,14 @@
         </property>
     </bean>
 
-    <mvc:default-servlet-handler/>
-    <!-- 配置multipartresolver -->
-    <!-- 上传文件 -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="2048000000"/>
-        <property name="defaultEncoding" value="utf-8"/>
-        <property name="maxInMemorySize" value="40960"/>
-    </bean>
-
     <!-- 配置显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <!--拼接路径信息  如果放在web-inf中  需要添加/WEB-INF-->
+        <!--拼接路径信息  如果放在WEB-INF中  需要添加/WEB-INF-->
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-
-        <property name="messageConverters">
-            <list>
-                <ref bean="jsonHttpMessageConverter"/>
-            </list>
-        </property>
-    </bean>
+    <!-- 配置jackson，可以以json格式做入参出参 -->
     <bean id="jsonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
@@ -67,5 +46,11 @@
         </property>
     </bean>
 
+    <!-- 访问静态资源
+    <mvc:resources mapping="/**" location="/public/images/" />
+    <mvc:resources mapping="/**" location="/js/" />
+    <mvc:resources mapping="/**" location="/public/css/"/>
+-->
+    <mvc:default-servlet-handler/>
 
 </beans>

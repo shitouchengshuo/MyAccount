@@ -20,7 +20,9 @@
 		<property name="securityManager" ref="securityManager" />
 		<!-- 要求登录时的链接 -->
 		<property name="loginUrl" value="/ui/login.jhtml" />
-
+<!--
+<property name="loginUrl" value="/ui/login.jhtml" />
+-->
 		<!-- 用户访问未对其授权的资源时,所显示的连接 -->
 		<property name="unauthorizedUrl" value="/jsp/login.jsp" />
 

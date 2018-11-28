@@ -42,12 +42,16 @@ public class WebController{
 	}
 
 	//跳转到登录页面
-	@RequestMapping("/login.jhtml")
-	public ModelAndView login() throws Exception {
-		ModelAndView mav = new ModelAndView("login");
-		return mav;
-	}
+//	@RequestMapping("/login.jhtml")
+//	public ModelAndView login() throws Exception {
+//		ModelAndView mav = new ModelAndView("login");
+//		return mav;
+//	}
 
+	@RequestMapping("/login.jhtml")
+	public String login(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		return "login";
+	}
 
 //	@RequestMapping("success")
 //	public String success(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
