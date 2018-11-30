@@ -28,12 +28,13 @@ function submitLogin(){
 				setCookies("access_token",data.access_token);
                 alert("登录成功");
 				location.href=context+"/ui/success";
+
 			}else if(data.error=="7"){
 				alert("用户名不存在");
 			}else if(data.error=="8"){
 				alert("密码错误");
 			}else if(data.error=="15"){
-				alert("密码未设置");
+				alert("用户被锁定");
 			}else if(data.error=="50"||data.error=="500"){
 				alert("服务器异常");
 			}

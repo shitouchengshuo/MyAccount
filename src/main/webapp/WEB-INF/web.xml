@@ -5,10 +5,7 @@
     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
   <display-name>MyAccount</display-name>
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring/spring-application.xml</param-value>
-  </context-param>
+
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -22,7 +19,11 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!-- 配置shiro -->
+  <!--
+  1. 配置  Shiro 的 shiroFilter.
+  2. DelegatingFilterProxy 实际上是 Filter 的一个代理对象. 默认情况下, Spring 会到 IOC 容器中查找和
+  <filter-name> 对应的 filter bean. 也可以通过 targetBeanName 的初始化参数来配置 filter bean 的 id.
+  -->
   <filter>
     <filter-name>shiroFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -36,11 +37,16 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <!--配置监听器加载contextConfigLocation -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/spring-application.xml</param-value>
+  </context-param>
 
-
+  <!--配置访问静态资源的路径，禁止Spring MVC拦截静态资源-->
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.js</url-pattern>
@@ -62,11 +68,10 @@
     <url-pattern>*.css</url-pattern>
   </servlet-mapping>
 
-  <!-- 配置DispatcherServlet -->
+  <!-- 配置Spring MVC -->
   <servlet>
-    <servlet-name>manage</servlet-name>
+    <servlet-name>Spring MVC</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 配置springMVC需要加载的配置文件-->
     <init-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:spring/spring-mvc.xml</param-value>
@@ -74,13 +79,8 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>manage</servlet-name>
-    <!-- 匹配所有请求，此处也可以配置成 *.do 形式 -->
+    <servlet-name>Spring MVC</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
-  <session-config>
-    <session-timeout>10</session-timeout>
-  </session-config>
 
 </web-app>
