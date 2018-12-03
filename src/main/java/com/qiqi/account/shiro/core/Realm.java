@@ -45,7 +45,7 @@ public class Realm extends AuthorizingRealm {
 		Set<String> roles = new HashSet<String>();//放置用户角色的set集合(不重复)
 		roles.add("user");//为所有用户添加user角色
 		if("admin".equals(principal)){
-			roles.add("admin");//当账号为admin时，添加admin角色
+			roles.add("admin");//为用户名为admin的用户添加admin角色
 		}
 
 		//3.创建SimpleAuthorizationInfo，并设置其roles属性
@@ -113,25 +113,6 @@ public class Realm extends AuthorizingRealm {
 		//SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal, credentials, credentialsSalt, realmName);
 
 		return info;
-	}
-
-
-	/**
-	 * 获取加盐后的密码
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		User user = null;
-		Iterator<String> it = userMap.keySet().iterator();
-		while(it.hasNext()){
-			user = userMap.get(it.next());
-			String hashAlgorithmName = "MD5";//加密方式
-			Object crdentials = user.getPassword();//密码原值
-			ByteSource salt = ByteSource.Util.bytes(user.getUsername());//以账号作为盐值
-			int hashIterations = 1024;//加密1024次
-			Object result = new SimpleHash(hashAlgorithmName,crdentials,salt,hashIterations);
-			System.out.println(user.getUsername()+":"+result);
-		}
 	}
 
 }

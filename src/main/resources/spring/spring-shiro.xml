@@ -12,9 +12,10 @@
 	    <property name="cacheManager" ref="shiroCacheManager" />
     </bean>
 
-    <!-- 2. 配置 CacheManager.缓存授权信息、不然每次访问都要登陆 -->
-    <!--  2.1 配置简单的非shiro自己实现的缓存-->
-    <!--
+    <!-- 2. 配置 CacheManager.缓存授权（注意是授权而不是认证）信息、不然每次访问都要授权(走doGetAuthorizationInfo方法)（关闭浏览器失效） -->
+	<!--这里说明一下，这里配置的缓存只对授权有效。我们自己创建的Real继承了AuthorizingRealm类，自定义Realm其实是具有对认证（用户密码等）缓存的，
+	      不配置CacheManager也可以实现认证的缓存-->
+    <!--  2.1 配置简单的非shiro自己实现的缓存
     <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
     -->
     <!--  2.2 配置ehcache缓存,需要加入ehcache的jar包及配置文件-->
@@ -23,17 +24,19 @@
 		<property name="configLocation" value="classpath:ehcache.xml" />
 		<property name="shared" value="true"></property>
 	</bean>
-	<!-- 缓存管理器 使用Ehcache实现 -->
+
+	<!-- 缓存管理器 使用Ehcache实现-->
 	<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
 		<property name="cacheManager" ref="ehCacheManager" />
 	</bean>
 
     <!-- 3. 配置Realm,自定义认证与授权-->
+
 	<!-- 3.1 不对密码加密
 	<bean id="myRealm" class="com.qiqi.account.shiro.core.Realm" />
 	-->
-	<!-- 3.2 对密码加密 -->
 
+	<!-- 3.2 对密码加密 -->
 	<bean id="myRealm" class="com.qiqi.account.shiro.core.Realm">
 		<property name="credentialsMatcher">
 			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
@@ -66,12 +69,10 @@
 		<!-- Shiro过滤链的定义 -->
 		<!-- anon: 该认证拦截器表示匿名访问（即不需要登录即可访问）就是不需要走loginurl,
 		           也就是不拦截该路径，一般用于静态资源过滤 -->
-		<!-- authc：该认证拦截器表示需要身份认证通过后才能访问（走loginurl，在loginurl路径的方法中通过调用
-		            subject.login(token)方法调用Realm类的doGetAuthenticationInfo()方法进行登录验证）-->
+		<!-- authc：该认证拦截器表示需要身份认证通过后才能访问（Subject.login（isAuthenticated()==true）才可以，否则进入loginUrl）-->
 		<!-- roles[admin]：该授权拦截器表示需要有admin角色授权才能访问 -->
 		<!-- perms["user:create"]：该授权拦截器表示需要有“user:create”权限才能访问-->
-		<!-- user:该认证拦截器,用户已经身份验证/记住我登录的即可-->
-		<!--以下只配置了认证拦截器，没有配置授权拦截器，不对用户进行权限访问的控制-->
+		<!-- user:该认证拦截器,用户已经身份验证/记住我登录的即可（(isRemembered()||isAuthenticated())==true）-->
 		<property name="filterChainDefinitions">
 			<value>
 				/test=anon
@@ -84,15 +85,13 @@
 				/webjars/**=anon
 
                  <!--授权配置-->
-				/ui/user = roles[user]
-				/ui/admin = roles[admin]
-				/** = authc,user
+				/ui/user = authc,roles[user] <!--需要认证并且有user角色-->
+				/ui/admin = authc,roles[admin]
+                /ui/index = user<!--认证过或“记住我”都可访问list.js-->
+
+				/** = authc
 			</value>
 		</property>
 	</bean>
-
-
-
-
 
 </beans>

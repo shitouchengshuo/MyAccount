@@ -40,6 +40,8 @@
     <a class="outer-link" href="${pageContext.request.contextPath}/ui/admin">Admin Page</a>
     <span>|</span>
     <a class="outer-link" href="${pageContext.request.contextPath}/ui/user">User Page</a>
+    <span>|</span>
+    <a class="outer-link" href="${pageContext.request.contextPath}/ui/testShiroAnnocation">Test ShiroAnnocation</a>
 </div>
 </body>
 </html>

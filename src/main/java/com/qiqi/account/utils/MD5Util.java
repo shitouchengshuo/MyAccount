@@ -1,5 +1,8 @@
 package com.qiqi.account.utils;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
+
 import java.security.MessageDigest;
 
 public class MD5Util {
@@ -23,6 +26,20 @@ public class MD5Util {
                 str[k++] = hexDigits[byte0 & 0xf];
             }
             return new String(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public final static String ShiroMD5(String password) {
+        try {
+            String hashAlgorithmName = "MD5";//加密方式
+            Object crdentials = password;//密码原值
+            Object salt = null;//盐值
+            int hashIterations = 1024;//加密1024次
+            Object result = new SimpleHash(hashAlgorithmName,crdentials,salt,hashIterations);
+            System.out.println(result);
+            return  result.toString();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
