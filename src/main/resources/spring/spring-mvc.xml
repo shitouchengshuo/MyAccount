@@ -12,7 +12,13 @@
 >
 
     <!-- 扫描web相关的bean -->
+    <!---->
     <context:component-scan base-package="com.qiqi.account"/>
+    <context:annotation-config/>
+    <context:component-scan use-default-filters="false" base-package="com.qiqi.account.controller">
+        <!-- 这样就会扫描这个包下所有的controller-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!-- 开启SpringMVC注解模式 -->
     <mvc:annotation-driven conversion-service="conversionService"/>
@@ -34,6 +40,7 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
     <!-- 配置jackson，可以以json格式做入参出参 -->
     <bean id="jsonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

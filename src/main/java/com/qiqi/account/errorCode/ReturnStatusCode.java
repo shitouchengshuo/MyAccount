@@ -41,6 +41,7 @@ public enum ReturnStatusCode {
 	CaptchaWrong("37","captcha is wrong or null"),
 	VerificationCodeRequestTooFast("38","VerificationCode has been requested too fast"),
 	VerificationCodeRequestTooMuch("39","VerificationCode has been requested too much"),
+	VerificationCodeNeeded("40", "need to send verification code to verify"),
 	AccountNotBind("41", "not bind to feixun account"),
     ServerError("50", "server error"),
 	ServerMaintenance("51", "server maintenance error"),

@@ -67,7 +67,7 @@ $(function($){
 			success:function(data){
 				if(data.error=="0"){
 					alert("注册成功");
-					location.href = context+"/ui/loginPage";
+					location.href = context+"/ui/login";
 				}else if(data.error=="1"){
 					alert("验证码错误");
 				}else if(data.error=="2"){

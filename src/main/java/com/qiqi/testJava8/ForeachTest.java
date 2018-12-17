@@ -1,7 +1,5 @@
 package com.qiqi.testJava8;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -14,6 +12,7 @@ import java.util.Map;
  * Created by ZhaoQiqi on 2018/11/10.
  */
 public class ForeachTest {
+
 
     public static void main(String[] args) {
             int n = 1;
@@ -35,12 +34,4 @@ public class ForeachTest {
         //匹配输出，匹配项可以为list集合元素的属性（成员变量）
         map.forEach((t,v)->System.out.println("id : " + t + " User : " + v));
     }
-
-    RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
-    //                                            RequestContextHolder.getRequestAttributes();
-    //从session里面获取对应的值
-    String str = (String) requestAttributes.getAttribute("name",RequestAttributes.SCOPE_SESSION);
-
-    HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
-    HttpServletResponse response = ((ServletRequestAttributes)requestAttributes).getResponse();
 }

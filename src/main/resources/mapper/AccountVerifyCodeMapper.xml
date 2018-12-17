@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiqi.account.dao.AccountVerifyCodeMapper">
+
+	<resultMap id="BaseResultMap" type="com.qiqi.account.model.TbAccountVerifyCode"></resultMap>
+	
+	<select id="getByPhone" parameterType="java.lang.String" resultType="com.qiqi.account.model.TbAccountVerifyCode">
+		select * from account_verifycode f where f.`phonenumber` = #{phonenumber}
+	</select>
+	
+	<select id="getByMail" parameterType="java.lang.String" resultType="com.qiqi.account.model.TbAccountVerifyCode">
+		select * from account_verifycode f where f.`emailaddress` = #{emailaddress}
+	</select>
+	
+	<insert id="saveOrUpdateById" parameterType="com.qiqi.account.model.TbAccountVerifyCode" useGeneratedKeys="true" keyProperty="uid">
+		<selectKey keyProperty="count" resultType="int" order="BEFORE">
+			select count(*) from account_verifycode f where f.`id` = #{id}
+		</selectKey>
+		
+		<if test="count == 0">
+			insert into account_verifycode(phonenumber, emailaddress, verifycode, vfccreatetime, vfcexpiretime, vfcstatus)
+			values(#{phonenumber}, #{emailaddress}, #{verifycode}, #{vfccreatetime}, #{vfcexpiretime}, #{vfcstatus}) 
+		</if>
+		
+		<if test="count == 1">
+			update account_verifycode f set f.`phonenumber` = #{phonenumber}, f.`emailaddress` = #{emailaddress}, f.`verifycode` = #{verifycode},
+			f.`vfccreatetime` = #{vfccreatetime}, f.`vfcexpiretime` = #{vfcexpiretime}, f.`vfcstatus` = #{vfcstatus} where f.`id` = #{id}  
+		</if>
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
